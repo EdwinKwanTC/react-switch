@@ -1,6 +1,6 @@
 "use strict";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./switch.css";
 
 type Props = {
@@ -20,11 +20,11 @@ const Switch = ({
   style,
   size = "medium",
 }: Props) => {
-  const [isChecked, setIsChecked] = useState<boolean>(checked || false);
+  const isChecked = useRef(checked || false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.checked;
-    setIsChecked(value);
+    isChecked.current = value;
     onChange && onChange(value);
   };
 
@@ -35,7 +35,7 @@ const Switch = ({
         <label>
           <input
             disabled={disabled}
-            checked={isChecked}
+            checked={isChecked.current}
             onChange={handleChange}
             type="checkbox"
           />

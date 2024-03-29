@@ -1,14 +1,14 @@
 "use strict";
 
-import { useState } from "react";
+import { useRef } from "react";
 import "./App.css";
 import Switch from "./components/Switch";
 
 function App() {
-  const [checked, setChecked] = useState<boolean>(true);
+  const checked = useRef(false);
 
   const handleChange = (value: boolean) => {
-    setChecked(value);
+    checked.current = value;
   };
 
   return (
@@ -17,7 +17,7 @@ function App() {
       <Switch
         size="medium"
         title="switch 2"
-        checked={checked}
+        checked={checked.current}
         onChange={handleChange}
       />
       <Switch size="large" title="switch 3" checked disabled />
