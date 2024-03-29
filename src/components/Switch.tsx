@@ -6,10 +6,9 @@ type Props = {
   checked?: boolean;
   onChange?: (checked: boolean) => void;
   disabled?: boolean;
-  style?: React.CSSProperties;
 };
 
-const Switch = ({ checked, onChange, disabled, style, ...rest }: Props) => {
+const Switch = ({ checked, onChange, disabled }: Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.checked;
     onChange && onChange(value);
@@ -23,7 +22,6 @@ const Switch = ({ checked, onChange, disabled, style, ...rest }: Props) => {
           checked={checked}
           onChange={handleChange}
           type="checkbox"
-          {...rest}
         />
         <span className="slider round"></span>
       </label>
