@@ -13,6 +13,7 @@ function App() {
 
   return (
     <>
+      <Switch />
       <Switch checked={checked} onChange={handleChange} />
       <Switch checked disabled />
     </>
