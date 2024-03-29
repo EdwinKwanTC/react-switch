@@ -7,10 +7,19 @@ type Props = {
   checked?: boolean;
   onChange?: (checked: boolean) => void;
   disabled?: boolean;
+  title?: string;
   style?: React.CSSProperties;
+  size?: "small" | "medium" | "large";
 };
 
-const Switch = ({ checked, onChange, disabled, style }: Props) => {
+const Switch = ({
+  checked,
+  onChange,
+  disabled,
+  title,
+  style,
+  size = "medium",
+}: Props) => {
   const [isChecked, setIsChecked] = useState<boolean>(checked || false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,16 +29,19 @@ const Switch = ({ checked, onChange, disabled, style }: Props) => {
   };
 
   return (
-    <div className="switch" style={style}>
-      <label>
-        <input
-          disabled={disabled}
-          checked={isChecked}
-          onChange={handleChange}
-          type="checkbox"
-        />
-        <span className="slider round"></span>
-      </label>
+    <div style={style}>
+      <div className={`title ${size}`}>{title}</div>
+      <div className={`switch ${size}`}>
+        <label>
+          <input
+            disabled={disabled}
+            checked={isChecked}
+            onChange={handleChange}
+            type="checkbox"
+          />
+          <span className={`slider ${size} round`}></span>
+        </label>
+      </div>
     </div>
   );
 };

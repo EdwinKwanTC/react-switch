@@ -12,11 +12,16 @@ function App() {
   };
 
   return (
-    <>
-      <Switch />
-      <Switch checked={checked} onChange={handleChange} />
-      <Switch checked disabled />
-    </>
+    <div>
+      <Switch size="small" title="switch 1" style={{ color: "grey" }} />
+      <Switch
+        size="medium"
+        title="switch 2"
+        checked={checked}
+        onChange={handleChange}
+      />
+      <Switch size="large" title="switch 3" checked disabled />
+    </div>
   );
 }
 
