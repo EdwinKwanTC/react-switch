@@ -1,6 +1,6 @@
 "use strict";
 
-import { useRef, useState } from "react";
+import React from "react";
 import "./switch.css";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   title?: string;
   style?: React.CSSProperties;
   size?: "small" | "medium" | "large";
-};
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "size">;
 
 const Switch = ({
   checked,
@@ -19,12 +19,10 @@ const Switch = ({
   title,
   style,
   size = "medium",
+  ...rest
 }: Props) => {
-  const isChecked = useRef(checked || false);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.checked;
-    isChecked.current = value;
     onChange && onChange(value);
   };
 
@@ -34,10 +32,11 @@ const Switch = ({
       <div className={`switch ${size}`}>
         <label>
           <input
+            defaultChecked={checked}
             disabled={disabled}
-            checked={isChecked.current}
             onChange={handleChange}
             type="checkbox"
+            {...rest}
           />
           <span className={`slider ${size} round`}></span>
         </label>
