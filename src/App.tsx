@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div>
-      <Switch size="small" title="switch 1" style={{ color: "grey" }} />
+      <Switch size="small" title="switch 1" />
       <Switch
         size="medium"
         title="switch 2"
@@ -21,7 +21,12 @@ function App() {
         onChange={handleChange}
       />
       <Switch size="large" title="switch 3" checked disabled />
-      <Switch size="large" title="switch 3" disabled />
+      <Switch
+        size="large"
+        title="switch 4"
+        disabled
+        style={{ color: "grey" }}
+      />
     </div>
   );
 }
