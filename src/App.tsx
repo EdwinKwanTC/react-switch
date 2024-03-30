@@ -1,15 +1,11 @@
 "use strict";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Switch from "./components/Switch";
 
 function App() {
   const [checked, setChecked] = useState<boolean>(true);
-
-  useEffect(() => {
-    console.log(checked);
-  }, [checked]);
 
   const handleChange = (value: boolean) => {
     setChecked(value);
