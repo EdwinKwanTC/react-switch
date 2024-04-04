@@ -32,7 +32,7 @@ const Switch = ({
       <div className={`switch ${size}`}>
         <label>
           <input
-            defaultChecked={checked}
+            checked={checked}
             disabled={disabled}
             onChange={handleChange}
             type="checkbox"
